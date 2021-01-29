@@ -1,0 +1,10 @@
+# Project
+node_modules
+
+# Config
+.env
+
+#Custom files
+*-ignore
+*.ignore.*
+*.ignore

@@ -1,0 +1,26 @@
+{
+  "name": "mirakl",
+  "version": "0.0.1",
+  "description": "Mirakl nodeJs client API",
+  "main": "./src/index.js",
+  "private": true,
+  "scripts": {
+    "lint": "standard"
+  },
+  "keywords": [
+    "mirakl"
+  ],
+  "author": "DTT team <john.quiceno@decathlon.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/boom": "^9.1.0",
+    "@hapi/joi": "^17.1.1",
+    "axios": "^0.19.2",
+    "defaults": "^1.0.3",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "ava": "^3.11.0",
+    "standard": "^14.3.4"
+  }
+}
