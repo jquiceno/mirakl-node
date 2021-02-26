@@ -1,6 +1,6 @@
 {
   "name": "mirakl",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Mirakl nodeJs client API",
   "main": "./src/index.js",
   "private": false,
