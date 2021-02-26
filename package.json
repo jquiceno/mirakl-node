@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Mirakl nodeJs client API",
   "main": "./src/index.js",
-  "private": true,
+  "private": false,
   "scripts": {
     "lint": "standard"
   },
