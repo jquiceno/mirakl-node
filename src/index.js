@@ -6,5 +6,6 @@ module.exports = {
   ...require('./lib/herarchie'),
   ...require('./lib/offer'),
   ...require('./lib/valueList'),
-  ...require('./lib/order')
+  ...require('./lib/order'),
+  ...require('./lib/shipping')
 }
