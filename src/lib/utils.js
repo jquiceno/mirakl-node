@@ -1,22 +1,20 @@
 'use strict'
 
+// const csv = require('csvtojson')
+// let csvToJson = require('convert-csv-to-json');
+const csvjson = require('csvjson')
+
 function csvToObject (csvText) {
-  let [headers, ...lines] = csvText.trim().split('\n')
-  headers = headers.split(';')
+  try {
+    const options = {
+      delimiter: ';',
+      quote: "'"
+    }
 
-  return lines.map(line => {
-    const values = line.split(';')
-
-    const item = {}
-
-    values.map((value, index) => {
-      value = value.slice(0, -1).slice(1)
-      item[headers[index]] = value
-      return true
-    })
-
-    return item
-  })
+    return csvjson.toObject(csvText, options)
+  } catch (error) {
+    throw new Error('Error converting csv file: ', error.message)
+  }
 }
 
 module.exports = {
