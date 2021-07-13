@@ -22,6 +22,21 @@ class Product {
       throw boom.boomify(error)
     }
   }
+
+  /**
+   * API [CM21]
+   * Synchronize products from Mirakl
+   */
+
+   static async synchronize (params = {}) {
+    try {
+      const { data } = await request.post('/mcm/products/synchronization', params)
+
+      return data || []
+    } catch (error) {
+      throw boom.boomify(error)
+    }
+  }
 }
 
 module.exports = (productId) => {
@@ -29,3 +44,4 @@ module.exports = (productId) => {
 }
 
 module.exports.exportProducts = Product.export
+module.exports.synchronizeProducts = Product.synchronize
