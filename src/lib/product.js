@@ -28,7 +28,7 @@ class Product {
    * Synchronize products from Mirakl
    */
 
-   static async synchronize (params = {}) {
+  static async synchronize (params = {}) {
     try {
       const { data } = await request.post('/mcm/products/synchronization', params)
 

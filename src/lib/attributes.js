@@ -19,5 +19,5 @@ async function getAttributes (params = {}) {
 }
 
 module.exports = {
-    getAttributes
+  getAttributes
 }

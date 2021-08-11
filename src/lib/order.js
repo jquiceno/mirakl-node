@@ -15,7 +15,11 @@ class Order {
 
       return data
     } catch (error) {
-      throw boom.boomify(error)
+      const { data } = error.response
+      throw boom.boomify(error, {
+        message: data.message,
+        statusCode: data.status
+      })
     }
   }
 
@@ -74,9 +78,30 @@ class Order {
       throw boom.boomify(error)
     }
   }
+
+  /**
+   * API [OR01]
+   * Create an order
+   * @param {object} newOrderData
+   */
+
+  static async add (newOrderData = {}) {
+    try {
+      const { data } = await request.post('/orders', { ...newOrderData })
+
+      return data.orders
+    } catch (error) {
+      const { data } = error.response
+      throw boom.boomify(error, {
+        message: data.message,
+        statusCode: data.status
+      })
+    }
+  }
 }
 
 module.exports.Order = Order
 module.exports.getOrderTaxes = Order.getTaxes
 module.exports.getOrderById = Order.getById
 module.exports.getAllOrders = Order.getAll
+module.exports.createOrder = Order.add
