@@ -1,6 +1,5 @@
 'use strict'
 
-const { request } = require('./request')
 const boom = require('@hapi/boom')
 
 /**
@@ -8,9 +7,9 @@ const boom = require('@hapi/boom')
    * Export attributes from Mirakl
    */
 
-async function getAttributes (params = {}) {
+async function getAll (params = {}) {
   try {
-    const { data } = await request.get('/products/attributes', { params })
+    const { data } = await this.request.get('/products/attributes', { params })
 
     return data || []
   } catch (error) {
@@ -19,5 +18,5 @@ async function getAttributes (params = {}) {
 }
 
 module.exports = {
-  getAttributes
+  getAll
 }

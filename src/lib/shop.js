@@ -1,38 +1,30 @@
 'use strict'
 
-const { request } = require('./request')
-const boom = require('@hapi/boom')
+const { boomify } = require('@hapi/boom')
 
-class Shop {
-  constructor (id) {
-    this.id = id
-  }
+async function get (id, params = {}) {
+  try {
+    const { data } = await this.request.get('/shops', {
+      params: { shop_ids: id, ...params }
+    })
 
-  async get (params = {}) {
-    try {
-      const { data } = await request.get('/shops', {
-        params: { shop_ids: this.id, ...params }
-      })
-
-      return data
-    } catch (error) {
-      throw boom.boomify(error)
-    }
-  }
-
-  static async getAll (params = {}) {
-    try {
-      const { data } = await request.get('/shops', { params })
-
-      return data
-    } catch (error) {
-      throw boom.boomify(error)
-    }
+    return data
+  } catch (error) {
+    throw boomify(error)
   }
 }
 
-module.exports = (storeId) => {
-  return new Shop(storeId)
+async function getAll (params = {}) {
+  try {
+    const { data } = await this.request.get('/shops', { params })
+
+    return data
+  } catch (error) {
+    throw boomify(error)
+  }
 }
 
-module.exports.getAllShops = Shop.getAll
+module.exports = {
+  get,
+  getAll
+}
